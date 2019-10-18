@@ -53,8 +53,12 @@ pipeline {
 
             }
 
-        
-
+        stage ('Deploy Stage') {
+            
+            steps
+            {
+                deploy adapters: [tomcat9(credentialsId: '7b10c527-3e2a-4619-9e4f-b5d406660497', path: '', url: 'http://localhost:8095/manager/html')], contextPath: null, war: '**/*.war'
+                 bat label: '', script: 'mvn deploy'
     }
 
 }
